@@ -26,9 +26,8 @@ class OrdersController extends Controller
      */
     public function order_details($id)
     {
-
         $order_details = Order_details::where('order_id', $id)->get();
-        // $view_product = Order_details::find($id);
+        // $order_details = Order_details::find($id);
         // dd($view_product);
         return view('admin.pages.order_details',compact('order_details'));
     }
@@ -41,7 +40,7 @@ class OrdersController extends Controller
      */
     public function order_details_update(Request $request,$id)
     {
-        Orders::find($id)->update(['status'=> $request->status]);
+        $order = Orders::find($id)->update(['status' => $request->status]);
         return redirect()->route('admin.orders');
     }
 

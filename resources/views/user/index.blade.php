@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card category_female">
-                        <a href="">
+                        <a href="{{route('womanpro')}}">
                             <img class="card-img-top" src="{{ url('assets-user') }}/img/banner/Card_1_DT.jpg"
                                 alt="">
                             <div class="category_title flex_between">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="card category_male">
-                        <a href="#">
+                        <a href="{{route('manpro')}}">
                             <img class="card-img-top" src="{{ url('assets-user') }}/img/banner/Card_2_DT.jpg"
                                 alt="">
                             <div class="category_title flex_between">
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="product-heading text-center">
-                        <h2>Popular Products</h2>
+                        <h2>BERSHKA</h2>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
 
         <div class="container">
             <div class="row">
-                @foreach ($popular as $value)
+                @foreach ($bershka as $value)
                     <div class="col-lg-3 col-md-4 col-6">
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
@@ -138,7 +138,59 @@
         </div>
     </section>
     <!-- new product end  -->
+    <section class="new_arrivals_area padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-heading text-center">
+                        <h2>ZARA</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="container">
+            <div class="row">
+                @foreach ($zara as $value)
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <a href="{{ route('product', $value->id) }}">
+                                    <img src="{{ url('upload.product') }}/{{ $value->image }}" alt=""></a>
+                                <!-- Hover Thumb -->
+                                {{-- <img class="hover-img" src="{{ url('assets-user') }}/img/product-img/product-2.jpg"
+                                alt=""> --}}
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span>{{ $value->getBrandName->name }}</span>
+                                <a href="{{ route('product', $value->id) }}">
+                                    <h6>{{ $value->name }}</h6>
+                                </a>
+                                <div class="d-flex justify-content-between">
+                                    <p>
+                                        <del class="product-price">{{ number_format($value->price) }}đ</del>
+                                    </p>
+                                    <p class="product-price text-danger" style="display: inline-block">{{ number_format($value->sale_price) }}đ</p>
+                                </div>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <a href="{{ route('product', $value->id) }}" class="btn essence-btn check-btn">View Product Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <!-- banner info  -->
     <div class="banner-info">
         <div class="container-fuild">
@@ -167,7 +219,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="product-heading text-center">
-                        <h2>New Products</h2>
+                        <h2>NEW PRODUCTS</h2>
                     </div>
                 </div>
             </div>
@@ -217,6 +269,60 @@
         </div>
     </section>
     <!-- new product 2 end  -->
+    <section class="new_arrivals_area padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-heading text-center">
+                        <h2>SALE PRODUCTS</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                @foreach ($salepro as $value)
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <a href="{{ route('product', $value->id) }}">
+                                    <img src="{{ url('upload.product') }}/{{ $value->image }}" alt="">
+                                </a>
+
+                                <!-- Hover Thumb -->
+                                {{-- <img class="hover-img" src="{{ url('assets-user') }}/img/product-img/product-2.jpg"
+                                alt=""> --}}
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span>{{ $value->getBrandName->name }}</span>
+                                <a href="{{ route('product', $value->id) }}">
+                                    <h6>{{ $value->name }}</h6>
+                                </a>
+                                <div class="d-flex justify-content-between">
+                                    <p>
+                                        <del class="product-price">{{ number_format($value->price) }}đ</del>
+                                    </p>
+                                    <p class="product-price text-danger" style="display: inline-block">{{ number_format($value->sale_price) }}đ</p>
+                                </div>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <a href="{{ route('product', $value->id) }}" class="btn essence-btn check-btn">View Product Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
     <!-- .discount -->
     <div class="discount padding-40">
