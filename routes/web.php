@@ -44,6 +44,7 @@ Route::get('/product/{id}', [UserController::class,'product'])->name('product');
 
 Route::get('/search', [UserController::class,'search'])->name('search');
 Route::get('/womanproduct',[UserController::class,'womanpro'])->name('womanpro');
+Route::get('/manproduct',[UserController::class,'manpro'])->name('manpro');
 
 
 //--------- OrderManagement -------//
@@ -91,6 +92,8 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::get('/product_update_show/{id}', [ProductsController::class, 'product_update_show'])->name('admin.product_update_show');
     Route::post('/product_update_show/{id}', [ProductsController::class, 'product_update'])->name('admin.product_update');
     Route::get('/product_delete/{id}', [ProductsController::class, 'product_delete'])->name('admin.product_delete');
+   
+
     // list brands
     Route::get('/brands', [BrandsController::class, 'brands'])->name('admin.brands');
     Route::get('/brands_add', [BrandsController::class, 'brands_add'])->name('admin.brands_add');
@@ -98,6 +101,11 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::get('/brands_update_show/{id}', [BrandsController::class, 'brands_update_show'])->name('admin.brands_update_show');
     Route::post('/brands_update_show/{id}', [BrandsController::class, 'brands_update_update'])->name('admin.brands_update_update');
     Route::get('/brands_delete/{id}', [BrandsController::class, 'brands_delete'])->name('admin.brands_delete');
+
+
+    // list  banners
+    Route::get('/banners', [BannersController::class, 'banners'])->name('admin.banners');
+    Route::get('/banners_add', [BannersController::class, 'banners_add'])->name('admin.banners_add');
 
     // list order
     Route::get('/orders', [OrdersController::class, 'orders'])->name('admin.orders');

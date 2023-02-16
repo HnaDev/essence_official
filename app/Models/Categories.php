@@ -16,4 +16,8 @@ class Categories extends Model
         $query = $query->where('type','like','%'.request()->keyword.'%');
         return $query;
     }
+    public function getTypeName()
+    {
+        return $this->belongsTo(Category_type::class,'type');
+    }
 }

@@ -90,7 +90,7 @@
                             <div class="product-topbar d-flex align-items-center justify-content-between">
                                 <!-- Total Products -->
                                 <div class="total-products">
-                                    <p><span>186</span> products found</p>
+                                    <p><span>{{count($product_woman)}}</span> products found</p>
                                 </div>
                                 <!-- Sorting -->
                                 <div class="product-sorting d-flex">
@@ -112,12 +112,15 @@
                     <div class="row">
 
                         <!-- Single Product -->
-                       @foreach($products as $item)
+                       @foreach($product_woman as $item)
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="single-product-wrapper">
                                 <!-- Product Image -->
                                 <div class="product-img">
-                                    <img src="{{url('upload.product')}}/{{$item->image}}" alt="">
+                                    <a href="{{ route('product', $item->id) }}">
+                                        <img src="{{url('upload.product')}}/{{$item->image}}" alt="">
+                                    </a>
+                                    
                                     {{-- {{dd($item->image)}} --}}
                                     <!-- Hover Thumb -->
                                     {{-- <img class="hover-img" src="{{ url('assets-user') }}/img/product-img/product-4.jpg" alt=""> --}}

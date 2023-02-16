@@ -8,6 +8,7 @@ use App\Models\Categories;
 use App\Models\Products;
 use App\Models\Product_attrs;
 use App\Models\Attributes;
+use DB;
 class UserController extends Controller
 {
     /**
@@ -17,10 +18,12 @@ class UserController extends Controller
      */
     public function index(Cart $cart)
     {
-        $Categories = Categories::all();
-        $popular = Products::orderBy('id','ASC')->limit(4)->get();
+        $categories = Categories::all();
+        $zara = Products::where('brand_id','3')->get(); //lấy đúng id của brand
+        $bershka = Products::where('brand_id','4')->get();//lấy đúng id của brand
         $newpro = Products::orderBy('id','DESC')->limit(8)->get();
-        return view('user.index',compact('Categories','popular','newpro','cart'));
+        $salepro = Products::where('sale_price','>','0')->get();
+        return view('user.index',compact('categories','zara','bershka','newpro','salepro','cart'));
     }
 
     //Show chi tiết sản phẩm
@@ -32,13 +35,30 @@ class UserController extends Controller
     //Show các sản phẩm của Woman
     public function womanpro()
     {
-        $products = Products::Where('type','1')->get();
+        $product_woman = DB::Table('Categories')
+                        ->join('category_types','category_types.id','=','categories.type')
+                        ->join('products','products.category_id','=','categories.id')
+                         ->where('categories.type','=','1')
+                        ->select('products.*','categories.type')
+                        ->get();
       
-        return view('user.product_woman',compact('products'));
+        return view('user.product_woman',compact('product_woman'));
+    }
+    public function manpro()
+    {
+        $product_man = DB::Table('Categories')
+                        ->join('category_types','category_types.id','=','categories.type')
+                        ->where('categories.type','=','2') //Để đúng id khớp với Man
+                        ->join('products','products.category_id','=','categories.id')
+                        ->select('products.*',)
+                        ->get();
+      
+        return view('user.product_man',compact('product_man'));
     }
     public function search()
     {
-        return view('user.search');
+        $search_product = Products::search()->paginate(10)->withQueryString();
+        return view('user.search',compact('search_product'));
     }
     public function OrderManagement()
     {
