@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use App\Models\Category_type;
 use App\Http\Requests\Category_addRequest;
 use App\Http\Requests\Category_updateRequest;
 
@@ -19,7 +20,8 @@ class CategorysController extends Controller
 
     public function category_add()
     {
-        return view('admin.pages.category-add');
+        $cate_type = Category_type::all();
+        return view('admin.pages.category-add',compact('cate_type'));
     }
 
     // create

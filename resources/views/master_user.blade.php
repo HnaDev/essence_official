@@ -371,7 +371,7 @@
                 <div class="col-lg-5 nav-right">
                     <div class="nav-meta d-flex">
                         <div class="search-area">
-                            <form action="#" method="get">
+                            <form action="{{route('search')}}" method="get">
                                 <input type="search" name="keyword" id="headerSearch"
                                     placeholder="Type for search">
                                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
