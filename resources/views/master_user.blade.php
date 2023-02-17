@@ -25,7 +25,7 @@
                         <div class="nav-menu">
                             <ul class="d-flex">
                                 <li class="menu-item_shop">
-                                    <a href="#" class="icon_shop">New</a>
+                                    <a href="{{route('newpro')}}" class="icon_shop">New</a>
                                     <div class="megamenu">
                                         <ul class="single-mega">
                                             <li class="title">Women's Collection</li>

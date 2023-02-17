@@ -59,6 +59,11 @@ class UserController extends Controller
       
         return view('user.product_man',compact('product_man','categories'));
     }
+    public function newpro(){
+        $categories = Categories::All();
+        $newpro = Products::orderBy('created_at','ASC')->paginate(5);
+        return view('user.product_new',compact('newpro','categories'));
+    }
     public function search()
     {
         $categories = Categories::all();

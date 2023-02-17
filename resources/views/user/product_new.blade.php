@@ -1,11 +1,11 @@
 @extends('master_user')
-@section('search')
+@section('container')
  <!-- banner shop -->
  <div class="banner-shop">
     <div class="container h-100">
         <div class="row flex_center h-100">
             <div class="col-12">
-                <h2>dresses</h2>
+                <h2>NEW PRODUCTS</h2>
             </div>
         </div>
     </div>
@@ -35,15 +35,6 @@
                                         @foreach($categories as $item)
                                         <li><a href="#">{{$item ->name}}</a></li>
                                         @endforeach
-                                        {{-- <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li> --}}
                                     </ul>
                                 </li>
                                 <!-- Single Item -->
@@ -92,61 +83,45 @@
                             <div class="product-topbar d-flex align-items-center justify-content-between">
                                 <!-- Total Products -->
                                 <div class="total-products">
-                                    <p><span>{{count($search_product)}}</span> products found</p>
+                                    <p><span>{{count($newpro)}}</span> products found</p>
                                 </div>
                                 <!-- Sorting -->
-                                        {{-- <div class="product-sorting d-flex">
-                                            <p>Sort by category:</p>
-                                            <form   >
-                                                @csrf                                   
-                                                <select name="sort1" id="sort1" class="form-control">
-                                                    <option value="{{Request::url()}}?sort_by=highest_rated">Highest Rated</option>
-                                                    <option value="{{Request::url()}}?sort_by=newest">Newest</option>
-                                                    <option value="{{Request::url()}}?sort_by=price_highest_low">Price: $$ - $</option>
-                                                    <option value="{{Request::url()}}?sort_by=price_lowest_high">Price: $ - $$</option>
-                                                </select>
-                                                
-                                            </form>
-                                        </div>       --}}
-                                <!-- Sorting -->        
                                 <div class="product-sorting d-flex">
                                     <p>Sort by:</p>
-                                    <form   >
-                                        @csrf                                   
-                                        <select name="sort" id="sort" class="form-control">
-                                            <option value="{{Request::url()}}?sort_by=none">No sort</option>
-                                            <option value="{{Request::url()}}?sort_by=highest_rated">Highest Rated</option>
-                                            <option value="{{Request::url()}}?sort_by=newest">Newest</option>
-                                            <option value="{{Request::url()}}?sort_by=price_highest_low">Price: $$ - $</option>
-                                            <option value="{{Request::url()}}?sort_by=price_lowest_high">Price: $ - $$</option>
+                                    <form action="#" method="get">
+                                        <select name="select" id="sortByselect">
+                                            <option value="value">Highest Rated</option>
+                                            <option value="value">Newest</option>
+                                            <option value="value">Price: $$ - $</option>
+                                            <option value="value">Price: $ - $$</option>
                                         </select>
-                                        
-                                        {{--         --}}
+                                        <input type="submit" class="d-none" value="">
                                     </form>
-                                </div>      
-                            </div>  
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="row">
 
                         <!-- Single Product -->
-                        @foreach($search_product as $item)
+                       @foreach($newpro as $item)
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="single-product-wrapper">
                                 <!-- Product Image -->
+                                
                                 <div class="product-img">
-                                    <a href="{{route('product',$item->id)}}">
-                                        <img src="{{ url('upload.product') }}/{{$item->image}}" alt="">
+                                    <a href="{{ route('product', $item->id) }}">
+                                        <img src="{{url('upload.product')}}/{{$item->image}}" alt="">
                                     </a>
-                                    {{-- <img src="{{ url('upload.product') }}/{{$item->image}}" alt=""> --}}
                                     <!-- Hover Thumb -->
-                                    {{-- <img class="hover-img" src="{{ url('assets-user') }}/img/product-img/product-2.jpg" alt=""> --}}
+                                    {{-- <img class="hover-img" src="{{ url('assets-user') }}/img/product-img/product-4.jpg" alt=""> --}}
 
                                     <!-- Product Badge -->
-                                    <div class="product-badge offer-badge">
-                                        <span>-30%</span>
+                                    <div class="product-badge new-badge">
+                                        <span>NEW</span>
                                     </div>
+
                                     <!-- Favourite -->
                                     <div class="product-favourite">
                                         <a href="#" class="favme fa fa-heart"></a>
@@ -156,10 +131,10 @@
                                 <!-- Product Description -->
                                 <div class="product-description">
                                     <span>{{$item->name}}</span>
-                                    <a href="single-product-details.html">
-                                        <h6>Knot Front Mini Dress</h6>
-                                    </a>
-                                    <p class="product-price"><span class="old-price"></span>{{$item->price}}</p>
+                                    {{-- <a href="single-product-details.html">
+                                        <h6>{{$item->description}}</h6>
+                                    </a> --}}
+                                    <p class="product-price">{{$item->price}}</p>
 
                                     <!-- Hover Content -->
                                     <div class="hover-content">
@@ -171,25 +146,13 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
-
+                       @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-        $(document).ready(function()    {
-                $('#sort').on('change',function(){
-                    var url = $(this).val();
-                    // alert(url);                 
-                        if(url){
-                            window.location = url;
-                        }
-                        return false;
-                }); 
-        })  
-    </script>       
+
 <!-- shop gird area end -->
 @endsection

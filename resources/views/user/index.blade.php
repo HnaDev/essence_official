@@ -16,7 +16,7 @@
                     <div class="hero-content">
                         <h6>asoss</h6>
                         <h2>New Collection</h2>
-                        <a href="#" class="btn view_collection">view collection</a>
+                        <a href="{{route('newpro')}}" class="btn view_collection">view collection</a>
                     </div>
                 </div>
             </div>
