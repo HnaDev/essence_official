@@ -11,7 +11,7 @@
     <hr>
     <ul class="app-menu">
         <li>
-            <a class="app-menu__item active" href="{{route('admin.index')}}">
+            <a class="app-menu__item" href="{{route('admin.index')}}">
                 <i class="app-menu__icon fa-solid fa-gauge" style="font-size: 22px;"></i>
                 <span class="app-menu__label">Bảng điều khiển</span>
             </a>

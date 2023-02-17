@@ -16,3 +16,4 @@ class Search extends Component
         ]);
     }
 }
+}
