@@ -19,4 +19,9 @@ class Order_details extends Model
     {
         return $this->belongsTo(Orders::class);
     }
+    // public function scopeSearch($query)
+    // {
+    //     $query = $query->where('name','like','%'.request()->keyword.'%');
+    //     return $query;
+    // }
 }

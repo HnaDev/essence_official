@@ -439,7 +439,7 @@
                         <div class="card-body text-center">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <a href="{{ url('OrderManagement') }}" class="card-link">Purchased Orders</a>
+                                    <a href="{{ route('OrderManagement') }}" class="card-link">Purchased Orders</a>
                                 </li>
                                 @if (Auth::check())
                                     <li class="list-group-item">

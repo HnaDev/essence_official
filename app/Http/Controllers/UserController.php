@@ -8,6 +8,7 @@ use App\Models\Categories;
 use App\Models\Products;
 use App\Models\Product_attrs;
 use App\Models\Attributes;
+use DB;
 class UserController extends Controller
 {
     /**
@@ -42,7 +43,14 @@ class UserController extends Controller
     }
     public function OrderManagement()
     {
-        return view('user.OrderManagement');
+        $Order_details = DB::Table('orders')
+        ->join('order_details','order_details.order_id','=','orders.id')
+        ->join('products','products.id','=','order_details.pro_id')
+        
+        ->select('orders.*','order_details.*','products.*' )
+        
+        ->get();
+        return view('user.OrderManagement', compact('Order_details'));
     }
 
     /**

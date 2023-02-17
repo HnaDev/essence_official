@@ -18,52 +18,43 @@
                 </div>
                 <div class="col-md-9">
                     <div class="box-order">
-                        <div class="menu-order">
-                            <ul class="d-flex">
-                                <li><a href="#">Tất Cả</a></li>
-                                <li><a href="#">Chờ Thanh Toán</a></li>
-                                <li><a href="#">Vận Chuyển</a></li>
-                                <li><a href="#">Đang Giao</a></li>
-                                <li><a href="#">Hoàn Thành</a></li>
-                                <li><a href="#">Đã Hủy</a></li>
-                                <li><a href="#">Trả Hàng/Hoàn Tiền</a></li>
-                            </ul>
-                        </div>
-                        <div class="search-order">
-                            <form action="" method="get">
-                                <input type="text" name="" id=""
-                                    placeholder="Bạn có thể tìm kiếm theo tên Shop, ID đơn hàng hoặc Tên Sản phẩm">
-                                <button type="submit">Tìm Kiếm</button>
-                            </form>
-                        </div>
                         {{-- change here --}}
                         <div class="box-bought">
                             <div class="single_box_buy">
+                                @foreach ($Order_details as $item)
                                 <div class="delivery">
                                     <div>
+                                        @if ($item->status == 1)
+                                        <td><span class="badge bg-info">Chờ Xử Lý</span></td>
+                                        
+                                    @elseif ($item->status == 2)
+                                        <td><span class="badge bg-warning">Đang Xử Lý</span></td>
+                                    @else
                                         <i class="fa-solid fa-truck"></i>
                                         <span>Giao hàng thành công</span>
+                                        <td><span class="badge bg-success">Hoàn Thành</span></td>
+                                    @endif
                                     </div>
-                                    <div>Hoàn Thành</div>
                                 </div>
                                 <div class="card product_purchased">
                                     <div class="row">
                                         <div class="col-md-10 product">
                                             <div class="product_img">
-                                                <img src="https://i.pinimg.com/564x/4c/73/20/4c7320a9d200b90bafbf1f79ffdef61e.jpg"
+                                                
+                                                <img src="{{ url('upload.product') }}//{{ $item->image }}"
                                                     class="img-fluid rounded-start" alt="...">
                                             </div>
                                             <div class="product_title">
                                                 <div>
-                                                    <h5>Áo thun nam nữ Unisex ADLV acme de la vie  áo phông nam nữ form rộng áo thun stee áo thun unisex</h5>
-                                                    <span>Phân loại Hàng : Đen,L </span>
-                                                    <p>Số lượng : 1</p>
+                                                    <h5>{{ $item->name }}</h5>
+                                                    <span>Phân loại Hàng :{{$item->size}} </span>
+                                                    <p>Số lượng : {{ $item->quantity }}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 product_price">
-                                                <del>120.000đ</del>
-                                                <span>90.000đ</span>
+                                                <del>{{ $item->price }}</del>
+                                                <span>{{ $item->sale_price }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -72,11 +63,11 @@
                                         <i class="fa-solid fa-money-check-dollar"></i>
                                         <span>Thành Tiền :</span>
                                     </div>
-                                    <div>120.000đ</div>
-                                    <div>
-                                        <button type="submit">Mua lại</button>
-                                    </div>
+                                    <div>{{$item->total_price}}</div>
+                                    
                                 </div>
+                                @endforeach
+                                
                             </div>
                         </div>
                         {{-- change here --}}
