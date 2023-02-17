@@ -1,11 +1,11 @@
 @extends('master_user')
-@section('container')
+@section('search')
  <!-- banner shop -->
  <div class="banner-shop">
     <div class="container h-100">
         <div class="row flex_center h-100">
             <div class="col-12">
-                <h2>WOMEN</h2>
+                <h2>dresses</h2>
             </div>
         </div>
     </div>
@@ -32,9 +32,16 @@
                                     <a href="#" class="menu-title1">clothing</a>
                                     <ul class="sub-menu collapse show" id="clothing">
                                         <li><a href="#">All</a></li>
-                                        @foreach($categories as $item)
-                                        <li><a href="#">{{$item ->name}}</a></li>
-                                        @endforeach
+                                        <li><a href="#">Bodysuits</a></li>
+                                        <li><a href="#">Dresses</a></li>
+                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
+                                        <li><a href="#">Jackets &amp; Coats</a></li>
+                                        <li><a href="#">Jeans</a></li>
+                                        <li><a href="#">Pants &amp; Leggings</a></li>
+                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
+                                        <li><a href="#">Shirts &amp; Blouses</a></li>
+                                        <li><a href="#">Shirts</a></li>
+                                        <li><a href="#">Sweaters &amp; Knits</a></li>
                                     </ul>
                                 </li>
                                 <!-- Single Item -->
@@ -83,7 +90,7 @@
                             <div class="product-topbar d-flex align-items-center justify-content-between">
                                 <!-- Total Products -->
                                 <div class="total-products">
-                                    <p><span>{{count($product_woman)}}</span> products found</p>
+                                    <p><span>{{count($search_product)}}</span> products found</p>
                                 </div>
                                 <!-- Sorting -->
                                 <div class="product-sorting d-flex">
@@ -105,24 +112,22 @@
                     <div class="row">
 
                         <!-- Single Product -->
-                       @foreach($product_woman as $item)
+                        @foreach($products as $item)
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="single-product-wrapper">
                                 <!-- Product Image -->
                                 <div class="product-img">
-                                    <a href="{{ route('product', $item->id) }}">
-                                        <img src="{{url('upload.product')}}/{{$item->image}}" alt="">
+                                    <a href="{{route('product',$item->id)}}">
+                                        <img src="{{ url('upload.product') }}/{{$item->image}}" alt="">
                                     </a>
-                                    
-                                    {{-- {{dd($item->image)}} --}}
+                                    {{-- <img src="{{ url('upload.product') }}/{{$item->image}}" alt=""> --}}
                                     <!-- Hover Thumb -->
-                                    {{-- <img class="hover-img" src="{{ url('assets-user') }}/img/product-img/product-4.jpg" alt=""> --}}
+                                    {{-- <img class="hover-img" src="{{ url('assets-user') }}/img/product-img/product-2.jpg" alt=""> --}}
 
                                     <!-- Product Badge -->
-                                    <div class="product-badge new-badge">
-                                        <span>Woman</span>
+                                    <div class="product-badge offer-badge">
+                                        <span>-30%</span>
                                     </div>
-
                                     <!-- Favourite -->
                                     <div class="product-favourite">
                                         <a href="#" class="favme fa fa-heart"></a>
@@ -132,10 +137,10 @@
                                 <!-- Product Description -->
                                 <div class="product-description">
                                     <span>{{$item->name}}</span>
-                                    {{-- <a href="single-product-details.html">
-                                        <h6>{{$item->description}}</h6>
-                                    </a> --}}
-                                    <p class="product-price">{{$item->price}}</p>
+                                    <a href="single-product-details.html">
+                                        <h6>Knot Front Mini Dress</h6>
+                                    </a>
+                                    <p class="product-price"><span class="old-price">$$item->price</span> $55.00</p>
 
                                     <!-- Hover Content -->
                                     <div class="hover-content">
@@ -147,7 +152,8 @@
                                 </div>
                             </div>
                         </div>
-                       @endforeach
+                        @endforeach
+
                     </div>
                 </div>
             </div>

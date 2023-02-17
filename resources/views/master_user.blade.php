@@ -57,7 +57,7 @@
                                     </div>
                                 </li>
                                 <li class="menu-item_shop">
-                                    <a href="#" class="icon_shop">Men</a>
+                                    <a href="{{route('manpro')}}" class="icon_shop">Men</a>
                                     <div class="megamenu">
                                         <ul class="single-mega">
                                             <li class="title">Women's Collection</li>
@@ -89,7 +89,7 @@
                                     </div>
                                 </li>
                                 <li class="menu-item_shop">
-                                    <a href="#" class="icon_shop">Women</a>
+                                    <a href="{{route('womanpro')}}" class="icon_shop">Women</a>
                                     <div class="megamenu">
                                         <ul class="single-mega">
                                             <li class="title">Women's Collection</li>
@@ -253,7 +253,7 @@
                                     </div>
                                 </li>
                                 <li class="menu-item_shop">
-                                    <a href="#" class="icon_shop">Women<i class="fa-solid fa-check"></i></a>
+                                    <a href="{{route('womanpro')}}" class="icon_shop">Women<i class="fa-solid fa-check"></i></a>
                                     <div class="megamenu">
                                         <ul class="single-mega">
                                             <li class="title">Women's Collection</li>
@@ -372,7 +372,7 @@
                     <div class="nav-meta d-flex">
                         <div class="search-area">
                             <form action="{{route('search')}}" method="get">
-                                <input type="search" name="keyword" id="headerSearch"
+                                <input type="search" name="keyword" id="headerSearch" wire:model="search"
                                     placeholder="Type for search">
                                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
@@ -621,6 +621,19 @@
     <script src="{{ url('assets-user') }}/OwlCarousel/dist/jquery-3.6.2.min.js"></script>
     <script src="{{ url('assets-user') }}/OwlCarousel/dist/owl.carousel.min.js"></script>
     <script src="{{ url('assets-user') }}/js/cart.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function()    {
+                $('#sort').on('change',function(){
+                    var url = $(this).val();
+
+                        if(url){
+                            window.location = url               ; 
+                        }
+                        return false;
+                }); 
+        })  
+    </script>
 </body>
 
 </html>

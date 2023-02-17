@@ -20,4 +20,7 @@ class Categories extends Model
     {
         return $this->belongsTo(Category_type::class,'type');
     }
+    public function product(){
+        return $this->hasMany('App\Products');      
+    }
 }

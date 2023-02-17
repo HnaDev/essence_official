@@ -170,6 +170,58 @@
             </div>
         </div>
     </div>
+    <section class="new_arrivals_area padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-heading text-center">
+                        <h2>SIMILAR PRODUCTS</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="container">
+            <div class="row">
+                @foreach ($similar_pro as $value)
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <a href="{{ route('product', $value->id) }}">
+                                    <img src="{{ url('upload.product') }}/{{ $value->image }}" alt=""></a>
+                                <!-- Hover Thumb -->
+                                {{-- <img class="hover-img" src="{{ url('assets-user') }}/img/product-img/product-2.jpg"
+                                alt=""> --}}
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span>{{ $value->getBrandName->name }}</span>
+                                <a href="{{ route('product', $value->id) }}">
+                                    <h6>{{ $value->name }}</h6>
+                                </a>
+                                <div class="d-flex justify-content-between">
+                                    <p>
+                                        <del class="product-price">{{ number_format($value->price) }}đ</del>
+                                    </p>
+                                    <p class="product-price text-danger" style="display: inline-block">{{ number_format($value->sale_price) }}đ</p>
+                                </div>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <a href="{{ route('product', $value->id) }}" class="btn essence-btn check-btn">View Product Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @endforeach
+            </div>
+        </div>
+        </section>
     <!-- product details ênd -->
     <script src="{{ url('assets-user') }}/js/cart.js"></script>
     <script src="{{ url('assets-user') }}/OwlCarousel/dist/jquery-3.6.2.min.js"></script>

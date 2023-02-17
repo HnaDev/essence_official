@@ -32,8 +32,10 @@
                                     <a href="#" class="menu-title1">clothing</a>
                                     <ul class="sub-menu collapse show" id="clothing">
                                         <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
+                                        @foreach($categories as $item)
+                                        <li><a href="#">{{$item ->name}}</a></li>
+                                        @endforeach
+                                        {{-- <li><a href="#">Dresses</a></li>
                                         <li><a href="#">Hoodies &amp; Sweats</a></li>
                                         <li><a href="#">Jackets &amp; Coats</a></li>
                                         <li><a href="#">Jeans</a></li>
@@ -41,7 +43,7 @@
                                         <li><a href="#">Rompers &amp; Jumpsuits</a></li>
                                         <li><a href="#">Shirts &amp; Blouses</a></li>
                                         <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
+                                        <li><a href="#">Sweaters &amp; Knits</a></li> --}}
                                     </ul>
                                 </li>
                                 <!-- Single Item -->
@@ -93,19 +95,36 @@
                                     <p><span>{{count($search_product)}}</span> products found</p>
                                 </div>
                                 <!-- Sorting -->
+                                        {{-- <div class="product-sorting d-flex">
+                                            <p>Sort by category:</p>
+                                            <form   >
+                                                @csrf                                   
+                                                <select name="sort1" id="sort1" class="form-control">
+                                                    <option value="{{Request::url()}}?sort_by=highest_rated">Highest Rated</option>
+                                                    <option value="{{Request::url()}}?sort_by=newest">Newest</option>
+                                                    <option value="{{Request::url()}}?sort_by=price_highest_low">Price: $$ - $</option>
+                                                    <option value="{{Request::url()}}?sort_by=price_lowest_high">Price: $ - $$</option>
+                                                </select>
+                                                
+                                            </form>
+                                        </div>       --}}
+                                <!-- Sorting -->
                                 <div class="product-sorting d-flex">
                                     <p>Sort by:</p>
-                                    <form action="#" method="get">
-                                        <select name="select" id="sortByselect">
-                                            <option value="value">Highest Rated</option>
-                                            <option value="value">Newest</option>
-                                            <option value="value">Price: $$ - $</option>
-                                            <option value="value">Price: $ - $$</option>
+                                    <form   >
+                                        @csrf                                   
+                                        <select name="sort" id="sort" class="form-control">
+                                            <option value="{{Request::url()}}?sort_by=none">No sort</option>
+                                            <option value="{{Request::url()}}?sort_by=highest_rated">Highest Rated</option>
+                                            <option value="{{Request::url()}}?sort_by=newest">Newest</option>
+                                            <option value="{{Request::url()}}?sort_by=price_highest_low">Price: $$ - $</option>
+                                            <option value="{{Request::url()}}?sort_by=price_lowest_high">Price: $ - $$</option>
                                         </select>
-                                        <input type="submit" class="d-none" value="">
+                                        <input type="submit" class="d-none" value="">   
+                                        {{--         --}}
                                     </form>
-                                </div>
-                            </div>
+                                </div>      
+                            </div>  
                         </div>
                     </div>
 
@@ -140,7 +159,7 @@
                                     <a href="single-product-details.html">
                                         <h6>Knot Front Mini Dress</h6>
                                     </a>
-                                    <p class="product-price"><span class="old-price">$$item->price</span> $55.00</p>
+                                    <p class="product-price"><span class="old-price"></span>{{$item->price}}</p>
 
                                     <!-- Hover Content -->
                                     <div class="hover-content">
@@ -160,6 +179,17 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+        $(document).ready(function()    {
+                $('#sort').on('change',function(){
+                    var url = $(this).val();
+                    // alert(url);                 
+                        if(url){
+                            window.location = url;
+                        }
+                        return false;
+                }); 
+        })  
+    </script>       
 <!-- shop gird area end -->
 @endsection
