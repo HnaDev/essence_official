@@ -70,7 +70,7 @@
                   <tbody>
                     @foreach ($Order as $item)
                       <tr>
-                      <td>{{$item->id}}</td>
+                      <td><a href="{{ route('admin.order_details', $item->id) }} ">{{$item->id}}</a></td>
                       <td>{{$item->full_name}}</td>
                       <td>{{$item->total_price}}</td>
                       @if ($item->status == 1)
