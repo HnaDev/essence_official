@@ -12,7 +12,7 @@ class Search extends Component
         public function render()
     {
         return view('livewire.search', [
-            'products' => Products::where('name', 'like','%'.$this->search.'%')->get(),
+            'products' => Products::where('name', 'like','%'.$this->search.'%')->get();
         ]);
     }
 }
