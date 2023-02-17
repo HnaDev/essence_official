@@ -15,5 +15,5 @@ class Search extends Component
             'products' => Products::where('name', 'like','%'.$this->search.'%')->get();
         ]);
     }
-}
+    }
 }
