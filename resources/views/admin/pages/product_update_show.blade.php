@@ -66,17 +66,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="exampleSelect1" class="control-label">Kiểu DM</label>
-                            <select class="form-control" id="exampleSelect1" name="type">
-                                <option>-- Chọn Type --</option>
-                                @foreach ($cate_type as $value)
-                                    <option value="{{ $value->id }}"
-                                        {{ $value->id == $product->type ? 'selected' : '' }}>{{ $value->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                    
                         <div class="form-group col-md-3">
                             <label for="exampleSelect1" class="control-label">Thương Hiệu</label>
                             <select class="form-control" id="exampleSelect1" name="brand_id">
