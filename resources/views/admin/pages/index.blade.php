@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <div class="app-title">
           <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><b>Bảng điều khiển</b></a></li>
+            <li class="breadcrumb-item"><a href="#"><b>Bảng Thống Kê</b></a></li>
           </ul>
         </div>
       </div>
@@ -72,7 +72,7 @@
                       <tr>
                       <td>{{$item->id}}</td>
                       <td>{{$item->full_name}}</td>
-                      <td>{{$item->total_price}}</td>
+                      <td>{{number_format($item->total_price)}}đ</td>
                       @if ($item->status == 1)
                       <td><span class="badge bg-info">Chờ Xử Lý</span></td>
                        @elseif ($item->status == 2)
@@ -92,7 +92,7 @@
           <!-- col-12 -->
           <div class="col-md-12">
             <div class="tile">
-              
+
               <h3 class="tile-title">Khách hàng mới</h3>
               <div>
                 <table class="table table-hover">

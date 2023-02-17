@@ -170,7 +170,7 @@
             </div>
         </div>
     </div>
-    <section class="new_arrivals_area padding-80">
+    <div class="new_arrivals_area" style="margin-top: 400px">
         <div class="container">
             <div class="row">
                 <div class="col-12">
