@@ -93,7 +93,7 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::get('/product_update_show/{id}', [ProductsController::class, 'product_update_show'])->name('admin.product_update_show');
     Route::post('/product_update_show/{id}', [ProductsController::class, 'product_update'])->name('admin.product_update');
     Route::get('/product_delete/{id}', [ProductsController::class, 'product_delete'])->name('admin.product_delete');
-   
+
 
     // list brands
     Route::get('/brands', [BrandsController::class, 'brands'])->name('admin.brands');
