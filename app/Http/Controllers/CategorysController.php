@@ -20,7 +20,7 @@ class CategorysController extends Controller
 
     public function category_add()
     {
-        $cate_type = Category_type::all();
+        $cate_type= Category_type::all();
         return view('admin.pages.category-add',compact('cate_type'));
     }
 

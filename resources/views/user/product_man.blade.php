@@ -5,7 +5,7 @@
     <div class="container h-100">
         <div class="row flex_center h-100">
             <div class="col-12">
-                <h2>Dresses</h2>
+                <h2>MEN</h2>
             </div>
         </div>
     </div>
@@ -32,16 +32,9 @@
                                     <a href="#" class="menu-title1">clothing</a>
                                     <ul class="sub-menu collapse show" id="clothing">
                                         <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
+                                        @foreach($categories as $item)
+                                        <li><a href="#">{{$item ->name}}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <!-- Single Item -->

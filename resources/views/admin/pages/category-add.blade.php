@@ -13,11 +13,24 @@
                 <div class="tile-body">
                     <form class="row" method="post">
                         @csrf
-                        <div class="form-group col-md-3">
+                        {{-- <div class="form-group col-md-3">
                             <label class="control-label">Loại Danh Mục</label>
                             <input class="form-control" type="text" name="type">
                             @error('type')
                                 <div class="alert alert-danger cl-red">{{ $message }}</div>
+                            @enderror
+                        </div> --}}
+                        <div class="form-group col-md-3">
+                            <label for="exampleSelect1" class="control-label">Loại danh mục</label>
+                            <select class="form-control" id="exampleSelect1" name="type"
+                                value="{{ old('type') }}">
+                                <option value="null">-- Chọn Loại Danh mục --</option>
+                                @foreach ($cate_type as $value)
+                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('type')
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group col-md-3 ">
