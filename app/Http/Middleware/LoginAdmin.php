@@ -17,15 +17,13 @@ class LoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        // nếu chưa đăng nhập thì chuyển sang login của admin
+        // If not logged in, switch to admin login
         if (!Auth::check()) {
             return redirect()->route('admin.loginAdmin');
-        }else{
-            if (Auth::user()->role == 1) {
-                return $next($request);
-            }else{
-                return redirect()->back()->with('notification', 'Đăng nhập không thành công');
-            }
         }
+        if (Auth::user()->role == 1) {
+            return $next($request);
+        }
+        return redirect()->back()->with('notification', 'Đăng nhập không thành công');
     }
 }

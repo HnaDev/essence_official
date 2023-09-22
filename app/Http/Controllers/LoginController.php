@@ -42,7 +42,7 @@ class LoginController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,
-                // mã hóa password
+                // hash password
                 'password' => Hash::make($request->password)
             ]);
             if ($User) {
@@ -69,9 +69,8 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt($credentials)) {
             return redirect()->route('user.index');
-        } else {
-            return redirect()->back()->with('notification', 'Login unsuccessful !');
         }
+        return redirect()->back()->with('notification', 'Login unsuccessful !');
     }
 
     // logout

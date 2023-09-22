@@ -19,8 +19,10 @@ class UserController extends Controller
     public function index(Cart $cart)
     {
         $categories = Categories::all();
-        $zara = Products::where('brand_id','3')->get(); //lấy đúng id của brand
-        $bershka = Products::where('brand_id','4')->get();//lấy đúng id của brand
+
+        #get id brand
+        $zara = Products::where('brand_id','3')->get();
+        $bershka = Products::where('brand_id','4')->get();
         $newpro = Products::orderBy('id','DESC')->limit(8)->get();
         $salepro = Products::where('sale_price','>','0')->get();
         return view('user.index',compact('categories','zara','bershka','newpro','salepro','cart'));
@@ -44,7 +46,7 @@ class UserController extends Controller
                          ->where('categories.type','=','1')
                         ->select('products.*','categories.type')
                         ->get();
-      
+
         return view('user.product_woman',compact('product_woman','categories'));
     }
     public function manpro()
@@ -56,7 +58,7 @@ class UserController extends Controller
                         ->join('products','products.category_id','=','categories.id')
                         ->select('products.*',)
                         ->get();
-      
+
         return view('user.product_man',compact('product_man','categories'));
     }
     public function newpro(){
@@ -67,25 +69,28 @@ class UserController extends Controller
     public function search()
     {
         $categories = Categories::all();
-        $search_product = Products::search()->paginate(11)->withQueryString();
+        $search_product = Products::search();
 
-        if(isset($_GET['sort_by'])){
+        if (isset($_GET['sort_by'])) {
             $sort_by = $_GET['sort_by'];
-            if($sort_by=='price_highest_low'){
-                $search_product = Products::orderBy ('price','DESC')->paginate(11);
-            } elseif($sort_by=='price_lowest_high'){
-                $search_product = Products::orderBy('price','ASC')->paginate(11 );
-            } elseif($sort_by=='highest_rated'){
-                $search_product = Products::orderBy('stock','DESC')->paginate(5);
-            } elseif($sort_by=='newest'){
-                $search_product = Products::orderBy('created_at','ASC')->paginate(5);
-            }elseif($sort_by=='none'){
-                $search_product = Products::search()->paginate(10)->withQueryString();
-            } else{
-                $search_product = Products::search()->paginate(10)->withQueryString();
+            if ($sort_by == 'price_highest_low') {
+                $search_product->orderBy('price', 'DESC');
+            } elseif ($sort_by == 'price_lowest_high') {
+                $search_product->orderBy('price', 'ASC');
+            } elseif ($sort_by == 'highest_rated') {
+                $search_product->orderBy('stock', 'DESC');
+            } elseif ($sort_by == 'newest') {
+                $search_product->orderBy('created_at', 'ASC');
             }
         }
-        return view('user.search',compact('search_product','categories'));
+
+        if (isset($_GET['keyword'])) {
+            $search_product->where('name', 'like', "%{$_GET['keyword']}%");
+        }
+
+        $search_product = $search_product->paginate(15)->withQueryString();
+
+        return view('user.search', compact('search_product', 'categories'));
     }
     public function OrderManagement()
     {

@@ -11,7 +11,14 @@ use Laravel\Sanctum\HasApiTokens;
 class Users extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $fillable = ['full_name', 'email','address', 'password','role','phone'];
+    protected $fillable = [
+        'full_name',
+        'email',
+        'address',
+        'password',
+        'role',
+        'phone'
+    ];
 
     public function scopeSearch($query){
         $query = $query->where('name','like','%'.request()->keyword.'%');

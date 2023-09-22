@@ -77,7 +77,8 @@ class CartController extends Controller
                     'name' => $item['name'],
                     'quantity' => $item['quantity'],
                     'unit_price' => $item['quantity'] * $item['price'],
-                    'size' => $item['attribute_size_id']
+                    'size' => $item['attribute_size_id'],
+                    'color' => $item['attribute_color_id']
                 ]);
             }
             $cart->remove();

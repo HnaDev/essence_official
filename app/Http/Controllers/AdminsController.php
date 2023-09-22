@@ -25,7 +25,8 @@ class AdminsController extends Controller
         $User = Users::orderBy('created_at','ASC')->take(4)->get();
         $Order = DB::Table('orders')
                     ->join('users','users.id','=','orders.user_id')
-                    ->orderBy('created_at','ASC')->take(4)
+                    // ->where('orders.status','1')
+                    // ->orderBy('created_at','ASC')->take(4)
                     ->select('orders.*','full_name')
                     ->get();
         return view('admin.pages.index', compact('Products','Orders','Users','Order_end','User','Order'));

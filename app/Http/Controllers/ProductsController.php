@@ -16,11 +16,11 @@ use App\Http\Requests\UpdateProductRequest;
 class ProductsController extends Controller
 {
     public function product()
-    {   
-        $products = Products::search()->paginate(6)->withQueryString();
+    {
+        $products = Products::orderBy('id','DESC')->search()->paginate(6)->withQueryString();
         return view('admin.pages.product',compact('products'));
     }
-    
+
     public function product_add()
     {
         $category = Categories::all();
@@ -75,7 +75,7 @@ class ProductsController extends Controller
                     'attribute_size_id'=> $value
             ]);
         }
-       
+
         $atrr_color = $req->attr_color_id;
             foreach($atrr_color as $value){
                 Product_Attrs::create([

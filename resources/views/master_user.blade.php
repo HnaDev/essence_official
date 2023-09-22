@@ -25,40 +25,7 @@
                         <div class="nav-menu">
                             <ul class="d-flex">
                                 <li class="menu-item_shop">
-<<<<<<< HEAD
                                     <a href="{{route('newpro')}}" class="icon_shop">New</a>
-                                    <div class="megamenu">
-                                        <ul class="single-mega">
-                                            <li class="title">Women's Collection</li>
-                                            <li><a href="shop.html">Dresses</a></li>
-                                            <li><a href="shop.html">Blouses &amp; Shirts</a></li>
-                                            <li><a href="shop.html">T-shirts</a></li>
-                                            <li><a href="shop.html">Rompers</a></li>
-                                            <li><a href="shop.html">Bras &amp; Panties</a></li>
-                                        </ul>
-                                        <ul class="single-mega">
-                                            <li class="title">Men's Collection</li>
-                                            <li><a href="#">T-Shirts</a></li>
-                                            <li><a href="#">Polo</a></li>
-                                            <li><a href="#">Shirts</a></li>
-                                            <li><a href="#">Jackets</a></li>
-                                            <li><a href="#">Trench</a></li>
-                                        </ul>
-                                        <ul class="single-mega">
-                                            <li class="title">Kid's Collection</li>
-                                            <li><a href="#">Dresses</a></li>
-                                            <li><a href="#">Shirts</a></li>
-                                            <li><a href="#">T-shirts</a></li>
-                                            <li><a href="#">Jackets</a></li>
-                                            <li><a href="#">Trench</a></li>
-                                        </ul>
-                                        <div class="single-mega">
-                                            <img src="img/bg-img/bg-6.jpg" alt="">
-                                        </div>
-                                    </div>
-=======
-                                    <a href="" class="icon_shop">New</a>
->>>>>>> be84bbcd75eaa8c0dffb3fa6865e97e68c323523
                                 </li>
                                 <li class="menu-item_shop">
                                     <a href="{{route('manpro')}}" class="icon_shop">Men</a>

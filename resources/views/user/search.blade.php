@@ -11,9 +11,7 @@
     </div>
 </div>
 <!-- banner shop end -->
-
 <!-- shop gird area -->
-
 <div class="shop_gird_area padding-80">
     <div class="container">
         <div class="row">
@@ -31,7 +29,6 @@
                                 <li data-toggle="collapse" data-target="#clothing">
                                     <a href="#" class="menu-title1">clothing</a>
                                     <ul class="sub-menu collapse show" id="clothing">
-                                        <li><a href="#">All</a></li>
                                         @foreach($categories as $item)
                                         <li><a href="#">{{$item ->name}}</a></li>
                                         @endforeach
@@ -44,40 +41,6 @@
                                         <li><a href="#">Shirts &amp; Blouses</a></li>
                                         <li><a href="#">Shirts</a></li>
                                         <li><a href="#">Sweaters &amp; Knits</a></li> --}}
-                                    </ul>
-                                </li>
-                                <!-- Single Item -->
-                                <li data-toggle="collapse" data-target="#shoes" class="collapsed">
-                                    <a href="#" class="menu-title2">shoes</a>
-                                    <ul class="sub-menu collapse" id="shoes">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
-                                    </ul>
-                                </li>
-                                <!-- Single Item -->
-                                <li data-toggle="collapse" data-target="#accessories" class="collapsed">
-                                    <a href="#">accessories</a>
-                                    <ul class="sub-menu collapse" id="accessories">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -94,25 +57,10 @@
                                 <div class="total-products">
                                     <p><span>{{count($search_product)}}</span> products found</p>
                                 </div>
-                                <!-- Sorting -->
-                                        {{-- <div class="product-sorting d-flex">
-                                            <p>Sort by category:</p>
-                                            <form   >
-                                                @csrf                                   
-                                                <select name="sort1" id="sort1" class="form-control">
-                                                    <option value="{{Request::url()}}?sort_by=highest_rated">Highest Rated</option>
-                                                    <option value="{{Request::url()}}?sort_by=newest">Newest</option>
-                                                    <option value="{{Request::url()}}?sort_by=price_highest_low">Price: $$ - $</option>
-                                                    <option value="{{Request::url()}}?sort_by=price_lowest_high">Price: $ - $$</option>
-                                                </select>
-                                                
-                                            </form>
-                                        </div>       --}}
-                                <!-- Sorting -->        
                                 <div class="product-sorting d-flex">
                                     <p>Sort by:</p>
-                                    <form   >
-                                        @csrf                                   
+                                    <form>
+                                        @csrf
                                         <select name="sort" id="sort" class="form-control">
                                             <option value="{{Request::url()}}?sort_by=none">No sort</option>
                                             <option value="{{Request::url()}}?sort_by=highest_rated">Highest Rated</option>
@@ -120,11 +68,9 @@
                                             <option value="{{Request::url()}}?sort_by=price_highest_low">Price: $$ - $</option>
                                             <option value="{{Request::url()}}?sort_by=price_lowest_high">Price: $ - $$</option>
                                         </select>
-                                        
-                                        {{--         --}}
                                     </form>
-                                </div>      
-                            </div>  
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -155,17 +101,16 @@
 
                                 <!-- Product Description -->
                                 <div class="product-description">
-                                    <span>{{$item->name}}</span>
-                                    <a href="single-product-details.html">
-                                        <h6>Knot Front Mini Dress</h6>
+                                    <a href="{{route('product',$item->id)}}">
+                                        <h6>{{ $item->name }}</h6>
                                     </a>
-                                    <p class="product-price"><span class="old-price"></span>{{$item->price}}</p>
+                                    <p class="product-price"><span class="old-price"></span>{!! number_format($item->price) !!}</p>
 
                                     <!-- Hover Content -->
                                     <div class="hover-content">
                                         <!-- Add to Cart -->
                                         <div class="add-to-cart-btn">
-                                            <a href="#" class="btn essence-btn check-btn">Add to Cart</a>
+                                            <a href="{{route('product',$item->id)}}" class="btn essence-btn check-btn">Add to Cart</a>
                                         </div>
                                     </div>
                                 </div>
@@ -179,17 +124,19 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
-        $(document).ready(function()    {
-                $('#sort').on('change',function(){
-                    var url = $(this).val();
-                    // alert(url);                 
-                        if(url){
-                            window.location = url;
-                        }
-                        return false;
-                }); 
-        })  
-    </script>       
+       document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('sort').addEventListener('change', function() {
+            var url = this.value;
+            if (url) {
+                window.location.href = url;
+            }
+
+            return false;
+        });
+    });
+
+    </script>
 <!-- shop gird area end -->
 @endsection

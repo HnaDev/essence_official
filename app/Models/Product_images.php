@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product_images extends Model
 {
-    protected $fillable = ['product_id','image'];
+    protected $fillable = [
+        'product_id',
+        'image'
+    ];
 }
