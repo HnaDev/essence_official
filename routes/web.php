@@ -14,6 +14,8 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LoginGoogleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -126,3 +128,8 @@ Route::get('/loginAdmin', [AdminsController::class,'loginAdmin'])->name('admin.l
 Route::post('/loginAdmin', [AdminsController::class,'PostloginAdmin']);
 Route::get('/logoutAdmin', [AdminsController::class,'logoutAdmin'])->name('admin.logout');
 
+
+Route::controller(LoginGoogleController::class)->group(function(){
+    Route::get('auth/google', 'start')->name('auth.google');
+    Route::get('login-done/google', 'handleGoogleCallback');
+});

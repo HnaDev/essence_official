@@ -45,6 +45,9 @@
                                             <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
                                                 type="submit">Log in</button>
                                             <a class="text-muted" href="#!">Forgot password?</a>
+                                            <a href="{{ route('auth.google') }}" style="margin-top: 10px;margin-bottom: -20px;" title="Login google">
+                                                <img width="48" height="48" src="https://img.icons8.com/color/96/google-logo.png" alt="google-logo"/>
+                                            </a>
                                         </div>
 
                                         <div class="d-flex align-items-center justify-content-center pb-4">
