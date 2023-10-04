@@ -12,9 +12,9 @@
                                     @csrf
                                     <div class="form-outline mb-3">
                                         <label class="form-label" for="form3Example1cg">Full Name</label>
-                                        <input name="full_name" type="text" id="form3Example1cg"
+                                        <input name="name" type="text" id="form3Example1cg"
                                             class="form-control form-control-lg" />
-                                        @error('full_name')
+                                        @error('name')
                                             <div class="alert alert-danger cl-red">{{ $message }}</div>
                                         @enderror
                                     </div>

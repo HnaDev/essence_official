@@ -14,6 +14,8 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LoginGoogleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -92,7 +94,7 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::get('/product_update_show/{id}', [ProductsController::class, 'product_update_show'])->name('admin.product_update_show');
     Route::post('/product_update_show/{id}', [ProductsController::class, 'product_update'])->name('admin.product_update');
     Route::get('/product_delete/{id}', [ProductsController::class, 'product_delete'])->name('admin.product_delete');
-   
+
 
     // list brands
     Route::get('/brands', [BrandsController::class, 'brands'])->name('admin.brands');
@@ -125,3 +127,8 @@ Route::get('/loginAdmin', [AdminsController::class,'loginAdmin'])->name('admin.l
 Route::post('/loginAdmin', [AdminsController::class,'PostloginAdmin']);
 Route::get('/logoutAdmin', [AdminsController::class,'logoutAdmin'])->name('admin.logout');
 
+
+Route::controller(LoginGoogleController::class)->group(function(){
+    Route::get('auth/google', 'start')->name('auth.google');
+    Route::get('login-done/google', 'handleGoogleCallback');
+});

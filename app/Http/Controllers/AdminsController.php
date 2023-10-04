@@ -34,7 +34,7 @@ class AdminsController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('admin.index');
         } else {
-            return redirect()->back()->with('notification', 'Login unsuccessful !');
+            return redirect()->back()->with('message', 'Login unsuccessful !');
         }
     }
 

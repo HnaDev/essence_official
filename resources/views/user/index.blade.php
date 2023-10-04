@@ -1,16 +1,8 @@
 @extends('master_user')
 @section('container')
     <!-- banner category -->
-    {{-- {{dd(session()->get('cart'))}} --}}
     <section class="welcome_category">
         <div class="container h-100">
-            {{-- allert notification --}}
-            @if (session('notification'))
-                <div class="alert alert-success text-center">
-                    {{ session('notification') }}
-                </div>
-            @endif
-            {{-- allert notification end --}}
             <div class="row h-100">
                 <div class="col-lg-12">
                     <div class="hero-content">

@@ -15,6 +15,6 @@ class AccountsController extends Controller
     public function account_delete($id)
     {
         Users::find($id)->delete();
-        return redirect()->back()->with('notification','Xóa Thành Công');
+        return redirect()->back()->with('message','Xóa Thành Công');
     }
 }

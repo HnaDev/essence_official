@@ -8,6 +8,8 @@
     <title>ESSENCE</title>
     <link rel="icon" href="{{ url('assets-user') }}/img/core-img/favicon.ico">
     <link rel="stylesheet" href="{{ url('assets-user') }}/css/style.css">
+    <link rel="stylesheet" href="{{ url('assets-user') }}/css/toastr.min.css">
+
 </head>
 
 <body>
@@ -425,7 +427,7 @@
                                         {{-- nếu có login thì duyệt name --}}
                                         @if (Auth::check())
                                             {{-- <a href="{{ route('login') }}" class="card-link name_user_hv"> --}}
-                                            <h6 id="name_user">{{ Auth::user()->full_name }}</h6>
+                                            <h6 id="name_user">{{ Auth::user()->name }}</h6>
                                             {{-- </a> --}}
                                         @else
                                             <a href="{{ route('login') }}" class="card-link name_user_hv">
@@ -621,6 +623,19 @@
     <script src="{{ url('assets-user') }}/OwlCarousel/dist/jquery-3.6.2.min.js"></script>
     <script src="{{ url('assets-user') }}/OwlCarousel/dist/owl.carousel.min.js"></script>
     <script src="{{ url('assets-user') }}/js/cart.js"></script>
+    <script src="{{ url('assets-user') }}/js/jquery.min.js"></script>
+    <script src="{{ url('assets-user') }}/js/toast.min.js"></script>
+    <script>
+          @if(Session::has('message'))
+        toastr.success("{{ session('message') }}");
+        @elseif (Session::has('error'))
+        toastr.error("{{ session('error') }}");
+        @elseif(Session::has('info'))
+        toastr.info("{{ session('info') }}");
+        @elseif(Session::has('warning'))
+        toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
 </body>
 
 </html>

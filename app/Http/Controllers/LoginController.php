@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use Auth;
@@ -35,10 +34,9 @@ class LoginController extends Controller
      */
     public function register_create(RegisterRequest $request)
     {
-
         try {
-            $User = Users::create([
-                'full_name' => $request->full_name,
+            $User = User::create([
+                'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,
